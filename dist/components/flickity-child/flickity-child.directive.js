@@ -11,10 +11,11 @@ var FlickityChildDirective = /** @class */ (function () {
         if (!this.parent) {
             return;
         }
+        console.log('APPENDING PARENT', this.el.nativeElement);
         this.parent.append(this.el.nativeElement);
     };
     FlickityChildDirective.decorators = [
-        { type: core_1.Directive, args: [{ selector: '[flickityChild]' },] },
+        { type: core_1.Directive, args: [{ selector: '[flickity-child]' },] },
     ];
     /** @nocollapse */
     FlickityChildDirective.ctorParameters = function () { return [

@@ -4,7 +4,7 @@ import {
 
 import { FlickityDirective } from '../flickity/flickity.directive';
 
-@Directive({ selector: '[flickityChild]' })
+@Directive({ selector: '[flickity-child]' })
 export class FlickityChildDirective implements OnInit {
 
   @Input() flickityChild: any;
@@ -16,7 +16,7 @@ export class FlickityChildDirective implements OnInit {
     if (!this.parent) {
       return;
     }
-
+    console.log('APPENDING PARENT', this.el.nativeElement)
     this.parent.append(this.el.nativeElement);
   }
 }
