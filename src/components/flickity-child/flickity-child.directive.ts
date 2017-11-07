@@ -4,7 +4,7 @@ import {
 
 import { FlickityDirective } from '../flickity/flickity.directive';
 
-@Directive({ selector: '[flickity-child]' })
+@Directive({ selector: '[flickityChild]' })
 export class FlickityChildDirective implements OnInit {
 
   @Input() flickityChild: any;

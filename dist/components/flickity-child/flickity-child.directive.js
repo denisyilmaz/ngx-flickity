@@ -15,7 +15,7 @@ var FlickityChildDirective = /** @class */ (function () {
         this.parent.append(this.el.nativeElement);
     };
     FlickityChildDirective.decorators = [
-        { type: core_1.Directive, args: [{ selector: '[flickity-child]' },] },
+        { type: core_1.Directive, args: [{ selector: '[flickityChild]' },] },
     ];
     /** @nocollapse */
     FlickityChildDirective.ctorParameters = function () { return [
