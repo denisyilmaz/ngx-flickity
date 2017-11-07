@@ -156,7 +156,10 @@ export class FlickityDirective implements AfterContentInit, OnDestroy {
       return;
     }
 
-    this.appendElements.forEach(el => this.flkty.append(el));
+    this.appendElements.forEach(el => {
+      console.log('WE ARE APPENDING IN PARENT')
+      this.flkty.append(el)
+    });
     this.appendElements = [];
 
     this.resize();

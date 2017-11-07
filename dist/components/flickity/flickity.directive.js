@@ -126,7 +126,10 @@ var FlickityDirective = /** @class */ (function () {
         if (!this.flkty || this.appendElements.length == 0) {
             return;
         }
-        this.appendElements.forEach(function (el) { return _this.flkty.append(el); });
+        this.appendElements.forEach(function (el) {
+            console.log('WE ARE APPENDING IN PARENT');
+            _this.flkty.append(el);
+        });
         this.appendElements = [];
         this.resize();
         this.childrenUpdated.emit();
