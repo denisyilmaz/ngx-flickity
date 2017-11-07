@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var app_config_service_1 = require("../../services/app-config.service");
-var FlickityDirective = (function () {
+var FlickityDirective = /** @class */ (function () {
     function FlickityDirective(el, appConfigService) {
         this.el = el;
         this.appConfigService = appConfigService;
@@ -13,7 +13,8 @@ var FlickityDirective = (function () {
         this.appendElements = [];
         this.childrenUpdateInterval = 300;
     }
-    FlickityDirective.prototype.ngAfterContentInit = function () {
+    FlickityDirective.prototype.ngAfterViewInit = function () {
+        console.log('we init here');
         this.init();
     };
     FlickityDirective.prototype.ngOnDestroy = function () {
@@ -137,21 +138,21 @@ var FlickityDirective = (function () {
         if (isInstant === void 0) { isInstant = false; }
         this.flkty.select(index, isWrapped, isInstant);
     };
+    FlickityDirective.decorators = [
+        { type: core_1.Directive, args: [{ selector: '[flickity]' },] },
+    ];
+    /** @nocollapse */
+    FlickityDirective.ctorParameters = function () { return [
+        { type: core_1.ElementRef, },
+        { type: app_config_service_1.AppConfigService, },
+    ]; };
+    FlickityDirective.propDecorators = {
+        'config': [{ type: core_1.Input, args: ['flickity',] },],
+        'slideSelect': [{ type: core_1.Output },],
+        'cellStaticClick': [{ type: core_1.Output },],
+        'childrenUpdated': [{ type: core_1.Output },],
+    };
     return FlickityDirective;
 }());
-FlickityDirective.decorators = [
-    { type: core_1.Directive, args: [{ selector: '[flickity]' },] },
-];
-/** @nocollapse */
-FlickityDirective.ctorParameters = function () { return [
-    { type: core_1.ElementRef, },
-    { type: app_config_service_1.AppConfigService, },
-]; };
-FlickityDirective.propDecorators = {
-    'config': [{ type: core_1.Input, args: ['flickity',] },],
-    'slideSelect': [{ type: core_1.Output },],
-    'cellStaticClick': [{ type: core_1.Output },],
-    'childrenUpdated': [{ type: core_1.Output },],
-};
 exports.FlickityDirective = FlickityDirective;
 //# sourceMappingURL=flickity.directive.js.map
