@@ -6,6 +6,11 @@ import {
 
 import { FlickityOptions } from "../../interfaces/flickity-options.interface";
 import { AppConfigService } from '../../services/app-config.service';
+import { Observable } from 'rxjs/Observable';
+import { ISubscription } from "rxjs/Subscription";
+import "rxjs/add/observable/interval";
+import "rxjs/add/observable/startWith";
+
 
 @Directive({ selector: '[flickity]' })
 export class FlickityDirective implements AfterContentInit, OnDestroy {
@@ -17,9 +22,9 @@ export class FlickityDirective implements AfterContentInit, OnDestroy {
 
   private flkty: any;
   private appendElements: HTMLElement[] = [];
-  private childrenUpdate;
+  private childrenUpdate: ISubscription;
   private childrenUpdateInterval = 300;
-
+  
   constructor(private el: ElementRef,
               private appConfigService: AppConfigService) {}
 
@@ -56,6 +61,11 @@ export class FlickityDirective implements AfterContentInit, OnDestroy {
     });
 
     this.updateElements();
+
+    let timer = Observable.interval(this.childrenUpdateInterval);
+    this.childrenUpdate = timer.subscribe(t=> {
+      this.updateElements();
+    });
   }
 
   destroy() {
@@ -63,9 +73,8 @@ export class FlickityDirective implements AfterContentInit, OnDestroy {
       return;
     }
 
-    if (this.childrenUpdate) {
-      clearInterval(this.childrenUpdate);
-      this.childrenUpdate = undefined;
+    if(this.childrenUpdate.unsubscribe()) {
+      this.childrenUpdate.unsubscribe();
     }
 
     this.flkty.destroy();
@@ -163,7 +172,6 @@ export class FlickityDirective implements AfterContentInit, OnDestroy {
 
     this.resize();
     this.childrenUpdated.emit();
-    this.childrenUpdate = setTimeout(() => this.updateElements(), this.childrenUpdateInterval);
   }
 
   select(index: number, isWrapped = true, isInstant = false) {
