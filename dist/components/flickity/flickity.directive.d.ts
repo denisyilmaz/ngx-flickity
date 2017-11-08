@@ -1,7 +1,7 @@
-import { ElementRef, OnDestroy, EventEmitter, OnInit } from '@angular/core';
+import { ElementRef, OnDestroy, EventEmitter, AfterViewInit } from '@angular/core';
 import { FlickityOptions } from "../../interfaces/flickity-options.interface";
 import { AppConfigService } from '../../services/app-config.service';
-export declare class FlickityDirective implements OnInit, OnDestroy {
+export declare class FlickityDirective implements AfterViewInit, OnDestroy {
     private el;
     private appConfigService;
     config: FlickityOptions;
@@ -13,7 +13,7 @@ export declare class FlickityDirective implements OnInit, OnDestroy {
     private childrenUpdate;
     private childrenUpdateInterval;
     constructor(el: ElementRef, appConfigService: AppConfigService);
-    ngOnInit(): void;
+    ngAfterViewInit(): void;
     ngOnDestroy(): void;
     init(): void;
     destroy(): void;
