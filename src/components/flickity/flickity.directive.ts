@@ -1,7 +1,7 @@
 declare let require: any;
 
 import {
-  ElementRef, Directive, OnDestroy, Input, Output, EventEmitter, AfterContentInit, NgZone
+  ElementRef, Directive, OnDestroy, Input, Output, EventEmitter, AfterContentInit
 } from '@angular/core';
 
 import { FlickityOptions } from "../../interfaces/flickity-options.interface";
@@ -21,8 +21,7 @@ export class FlickityDirective implements AfterContentInit, OnDestroy {
   private childrenUpdateInterval = 300;
 
   constructor(private el: ElementRef,
-              private appConfigService: AppConfigService,
-              private _ngZone: NgZone) {}
+              private appConfigService: AppConfigService) {}
 
   ngAfterContentInit(): void {
     this.init();
@@ -57,10 +56,8 @@ export class FlickityDirective implements AfterContentInit, OnDestroy {
     });
 
     this.updateElements();
-    this._ngZone.runOutsideAngular(() => {
-      this.resize();
-      this._ngZone.run(() => { console.log('Outside Done!') });
-    })
+
+    setTimeout(() => this.resize(), this.childrenUpdateInterval);
   }
 
   destroy() {

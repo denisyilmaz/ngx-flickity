@@ -1,10 +1,9 @@
-import { ElementRef, OnDestroy, EventEmitter, AfterContentInit, NgZone } from '@angular/core';
+import { ElementRef, OnDestroy, EventEmitter, AfterContentInit } from '@angular/core';
 import { FlickityOptions } from "../../interfaces/flickity-options.interface";
 import { AppConfigService } from '../../services/app-config.service';
 export declare class FlickityDirective implements AfterContentInit, OnDestroy {
     private el;
     private appConfigService;
-    private _ngZone;
     config: FlickityOptions;
     slideSelect: EventEmitter<number>;
     cellStaticClick: EventEmitter<number>;
@@ -13,7 +12,7 @@ export declare class FlickityDirective implements AfterContentInit, OnDestroy {
     private appendElements;
     private childrenUpdate;
     private childrenUpdateInterval;
-    constructor(el: ElementRef, appConfigService: AppConfigService, _ngZone: NgZone);
+    constructor(el: ElementRef, appConfigService: AppConfigService);
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
     init(): void;

@@ -3,10 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var app_config_service_1 = require("../../services/app-config.service");
 var FlickityDirective = /** @class */ (function () {
-    function FlickityDirective(el, appConfigService, _ngZone) {
+    function FlickityDirective(el, appConfigService) {
         this.el = el;
         this.appConfigService = appConfigService;
-        this._ngZone = _ngZone;
         this.config = {};
         this.slideSelect = new core_1.EventEmitter();
         this.cellStaticClick = new core_1.EventEmitter();
@@ -39,10 +38,7 @@ var FlickityDirective = /** @class */ (function () {
             _this.cellStaticClick.emit(cellIndex);
         });
         this.updateElements();
-        this._ngZone.runOutsideAngular(function () {
-            _this.resize();
-            _this._ngZone.run(function () { console.log('Outside Done!'); });
-        });
+        setTimeout(function () { return _this.resize(); }, this.childrenUpdateInterval);
     };
     FlickityDirective.prototype.destroy = function () {
         if (!this.flkty) {
@@ -151,7 +147,6 @@ var FlickityDirective = /** @class */ (function () {
     FlickityDirective.ctorParameters = function () { return [
         { type: core_1.ElementRef, },
         { type: app_config_service_1.AppConfigService, },
-        { type: core_1.NgZone, },
     ]; };
     FlickityDirective.propDecorators = {
         'config': [{ type: core_1.Input, args: ['flickity',] },],
