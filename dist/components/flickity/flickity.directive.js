@@ -13,7 +13,7 @@ var FlickityDirective = /** @class */ (function () {
         this.appendElements = [];
         this.childrenUpdateInterval = 300;
     }
-    FlickityDirective.prototype.ngAfterContentInit = function () {
+    FlickityDirective.prototype.ngOnInit = function () {
         this.init();
     };
     FlickityDirective.prototype.ngOnDestroy = function () {
@@ -127,7 +127,6 @@ var FlickityDirective = /** @class */ (function () {
             return;
         }
         this.appendElements.forEach(function (el) {
-            console.log('WE ARE APPENDING IN PARENT');
             _this.flkty.append(el);
         });
         this.appendElements = [];

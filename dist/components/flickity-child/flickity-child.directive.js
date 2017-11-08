@@ -11,7 +11,6 @@ var FlickityChildDirective = /** @class */ (function () {
         if (!this.parent) {
             return;
         }
-        console.log('APPENDING PARENT', this.el.nativeElement);
         this.parent.append(this.el.nativeElement);
     };
     FlickityChildDirective.decorators = [
