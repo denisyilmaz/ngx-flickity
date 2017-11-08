@@ -16,9 +16,6 @@ var FlickityDirective = /** @class */ (function () {
     FlickityDirective.prototype.ngAfterContentInit = function () {
         this.init();
     };
-    FlickityDirective.prototype.ngAfterViewChecked = function () {
-        this.resize();
-    };
     FlickityDirective.prototype.ngOnDestroy = function () {
         this.destroy();
     };
@@ -41,6 +38,7 @@ var FlickityDirective = /** @class */ (function () {
             _this.cellStaticClick.emit(cellIndex);
         });
         this.updateElements();
+        setTimeout(this.resize(), 100);
     };
     FlickityDirective.prototype.destroy = function () {
         if (!this.flkty) {
@@ -135,7 +133,7 @@ var FlickityDirective = /** @class */ (function () {
         this.appendElements = [];
         this.resize();
         this.childrenUpdated.emit();
-        this.childrenUpdate = setTimeout(function () { return _this.updateElements(); }, this.childrenUpdateInterval);
+        this.childrenUpdate = setTimeout(this.updateElements(), this.childrenUpdateInterval);
     };
     FlickityDirective.prototype.select = function (index, isWrapped, isInstant) {
         if (isWrapped === void 0) { isWrapped = true; }
