@@ -1,8 +1,6 @@
 import { ElementRef, OnDestroy, EventEmitter, AfterContentInit } from '@angular/core';
 import { FlickityOptions } from "../../interfaces/flickity-options.interface";
 import { AppConfigService } from '../../services/app-config.service';
-import "rxjs/add/observable/interval";
-import "rxjs/add/operator/startWith";
 export declare class FlickityDirective implements AfterContentInit, OnDestroy {
     private el;
     private appConfigService;

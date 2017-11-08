@@ -2,9 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var app_config_service_1 = require("../../services/app-config.service");
-var Observable_1 = require("rxjs/Observable");
-require("rxjs/add/observable/interval");
-require("rxjs/add/operator/startWith");
 var FlickityDirective = /** @class */ (function () {
     function FlickityDirective(el, appConfigService) {
         this.el = el;
@@ -41,17 +38,14 @@ var FlickityDirective = /** @class */ (function () {
             _this.cellStaticClick.emit(cellIndex);
         });
         this.updateElements();
-        var timer = Observable_1.Observable.interval(this.childrenUpdateInterval).startWith(0);
-        this.childrenUpdate = timer.subscribe(function (t) {
-            _this.updateElements();
-        });
     };
     FlickityDirective.prototype.destroy = function () {
         if (!this.flkty) {
             return;
         }
-        if (this.childrenUpdate.unsubscribe()) {
-            this.childrenUpdate.unsubscribe();
+        if (this.childrenUpdate) {
+            clearInterval(this.childrenUpdate);
+            this.childrenUpdate = undefined;
         }
         this.flkty.destroy();
     };
@@ -138,6 +132,7 @@ var FlickityDirective = /** @class */ (function () {
         this.appendElements = [];
         this.resize();
         this.childrenUpdated.emit();
+        this.childrenUpdate = setTimeout(function () { return _this.updateElements(); }, this.childrenUpdateInterval);
     };
     FlickityDirective.prototype.select = function (index, isWrapped, isInstant) {
         if (isWrapped === void 0) { isWrapped = true; }
