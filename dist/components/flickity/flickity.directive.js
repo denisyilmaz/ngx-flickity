@@ -13,7 +13,7 @@ var FlickityDirective = /** @class */ (function () {
         this.appendElements = [];
         this.childrenUpdateInterval = 300;
     }
-    FlickityDirective.prototype.ngAfterViewInit = function () {
+    FlickityDirective.prototype.ngAfterContentInit = function () {
         this.init();
     };
     FlickityDirective.prototype.ngOnDestroy = function () {
