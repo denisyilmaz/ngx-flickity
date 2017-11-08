@@ -1,14 +1,14 @@
 declare let require: any;
 
 import {
-  ElementRef, Directive, OnDestroy, Input, Output, EventEmitter, AfterContentInit
+  ElementRef, Directive, OnDestroy, Input, Output, EventEmitter, AfterContentInit, AfterViewChecked
 } from '@angular/core';
 
 import { FlickityOptions } from "../../interfaces/flickity-options.interface";
 import { AppConfigService } from '../../services/app-config.service';
 
 @Directive({ selector: '[flickity]' })
-export class FlickityDirective implements AfterContentInit, OnDestroy {
+export class FlickityDirective implements AfterContentInit, AfterViewChecked, OnDestroy {
 
   @Input('flickity') config: FlickityOptions = {};
   @Output() slideSelect = new EventEmitter<number>();
@@ -26,7 +26,9 @@ export class FlickityDirective implements AfterContentInit, OnDestroy {
   ngAfterContentInit(): void {
     this.init();
   }
-
+  ngAfterViewChecked(): void {
+    this.resize();
+  }
   ngOnDestroy(): void {
     this.destroy();
   }

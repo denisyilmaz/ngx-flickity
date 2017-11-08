@@ -16,6 +16,9 @@ var FlickityDirective = /** @class */ (function () {
     FlickityDirective.prototype.ngAfterContentInit = function () {
         this.init();
     };
+    FlickityDirective.prototype.ngAfterViewChecked = function () {
+        this.resize();
+    };
     FlickityDirective.prototype.ngOnDestroy = function () {
         this.destroy();
     };
