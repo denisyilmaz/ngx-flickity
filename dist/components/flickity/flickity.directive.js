@@ -4,7 +4,7 @@ var core_1 = require("@angular/core");
 var app_config_service_1 = require("../../services/app-config.service");
 var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/observable/interval");
-require("rxjs/add/observable/startWith");
+require("rxjs/add/operator/startWith");
 var FlickityDirective = /** @class */ (function () {
     function FlickityDirective(el, appConfigService) {
         this.el = el;
@@ -41,7 +41,7 @@ var FlickityDirective = /** @class */ (function () {
             _this.cellStaticClick.emit(cellIndex);
         });
         this.updateElements();
-        var timer = Observable_1.Observable.interval(this.childrenUpdateInterval);
+        var timer = Observable_1.Observable.interval(this.childrenUpdateInterval).startWith(0);
         this.childrenUpdate = timer.subscribe(function (t) {
             _this.updateElements();
         });

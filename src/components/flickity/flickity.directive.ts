@@ -9,7 +9,7 @@ import { AppConfigService } from '../../services/app-config.service';
 import { Observable } from 'rxjs/Observable';
 import { ISubscription } from "rxjs/Subscription";
 import "rxjs/add/observable/interval";
-import "rxjs/add/observable/startWith";
+import "rxjs/add/operator/startWith";
 
 
 @Directive({ selector: '[flickity]' })
@@ -62,7 +62,7 @@ export class FlickityDirective implements AfterContentInit, OnDestroy {
 
     this.updateElements();
 
-    let timer = Observable.interval(this.childrenUpdateInterval);
+    let timer = Observable.interval(this.childrenUpdateInterval).startWith(0);
     this.childrenUpdate = timer.subscribe(t=> {
       this.updateElements();
     });
