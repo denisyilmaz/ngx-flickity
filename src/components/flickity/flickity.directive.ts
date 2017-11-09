@@ -20,7 +20,7 @@ export class FlickityDirective implements AfterContentInit, OnDestroy {
   private childrenUpdate;
   private childrenUpdateInterval = 300;
 
-  constructor(private containerRef: ViewContainerRef,
+  constructor(private viewContainerRef: ViewContainerRef,
               private appConfigService: AppConfigService) {}
 
   ngAfterContentInit(): void {
@@ -45,7 +45,7 @@ export class FlickityDirective implements AfterContentInit, OnDestroy {
       this.destroy();
     }
     
-    this.flkty = new Flickity(this.containerRef.element.nativeElement, config);
+    this.flkty = new Flickity(this.viewContainerRef, config);
 
     this.flkty.on('select', () => {
       this.slideSelect.emit(this.selectedIndex);
