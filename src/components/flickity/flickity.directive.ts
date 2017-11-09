@@ -1,22 +1,23 @@
 declare let require: any;
 
 import {
-  Directive, OnDestroy, Input, Output, EventEmitter, AfterContentInit
+  ElementRef, Directive, OnDestroy, Input, Output, EventEmitter, AfterContentInit
 } from '@angular/core';
 
 import { FlickityOptions } from "../../interfaces/flickity-options.interface";
+import { AppConfigService } from '../../services/app-config.service';
 
 @Directive({ selector: '[flickity]' })
 export class FlickityDirective implements AfterContentInit, OnDestroy {
 
   @Input('flickity') config: FlickityOptions = {};
 
-  
-  constructor() { }
+  constructor(private el: ElementRef,
+              private appConfigService: AppConfigService) { }
 
   ngAfterContentInit(): void {
     // this.init();
-    console.log('HI', this.config);
+    console.log('HI');
   }
 
   ngOnDestroy(): void {
