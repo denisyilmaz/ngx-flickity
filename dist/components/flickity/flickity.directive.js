@@ -150,7 +150,7 @@ var FlickityDirective = /** @class */ (function () {
         { type: app_config_service_1.AppConfigService, },
     ]; };
     FlickityDirective.propDecorators = {
-        'config': [{ type: core_1.Input, args: ['flickityConfig',] },],
+        'config': [{ type: core_1.Input, args: ['flickity',] },],
         'slideSelect': [{ type: core_1.Output },],
         'cellStaticClick': [{ type: core_1.Output },],
         'childrenUpdated': [{ type: core_1.Output },],

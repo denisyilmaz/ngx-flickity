@@ -10,7 +10,7 @@ import { AppConfigService } from '../../services/app-config.service';
 @Directive({ selector: '[flickity]' })
 export class FlickityDirective implements AfterContentInit, OnDestroy {
 
-  @Input('flickityConfig') config: FlickityOptions = {};
+  @Input('flickity') config: FlickityOptions = {};
   @Output() slideSelect = new EventEmitter<number>();
   @Output() cellStaticClick = new EventEmitter<number>();
   @Output() childrenUpdated = new EventEmitter<void>();
