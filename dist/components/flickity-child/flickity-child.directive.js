@@ -23,7 +23,7 @@ var FlickityChildDirective = /** @class */ (function () {
         if (!this.parent) {
             return;
         }
-        this.parent.append(this.el.nativeElement);
+        // this.parent.append(this.el.nativeElement);
     };
     __decorate([
         core_1.Input(),

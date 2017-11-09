@@ -16,6 +16,6 @@ export class FlickityChildDirective implements OnInit {
     if (!this.parent) {
       return;
     }
-    this.parent.append(this.el.nativeElement);
+    // this.parent.append(this.el.nativeElement);
   }
 }
