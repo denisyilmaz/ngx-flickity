@@ -1,7 +1,7 @@
 declare let require: any;
 
 import {
-  ElementRef, Directive, OnDestroy, Input, Output, EventEmitter, AfterContentInit
+  ViewContainerRef, Directive, OnDestroy, Input, Output, EventEmitter, AfterContentInit
 } from '@angular/core';
 
 import { FlickityOptions } from "../../interfaces/flickity-options.interface";
@@ -20,7 +20,7 @@ export class FlickityDirective implements AfterContentInit, OnDestroy {
   private childrenUpdate;
   private childrenUpdateInterval = 300;
 
-  constructor(private el: ElementRef,
+  constructor(private containerRef: ViewContainerRef,
               private appConfigService: AppConfigService) {}
 
   ngAfterContentInit(): void {
@@ -44,8 +44,8 @@ export class FlickityDirective implements AfterContentInit, OnDestroy {
       config['initialIndex'] = this.flkty.selectedIndex;
       this.destroy();
     }
-
-    this.flkty = new Flickity(this.el.nativeElement, config);
+    
+    this.flkty = new Flickity(this.containerRef.element.nativeElement, config);
 
     this.flkty.on('select', () => {
       this.slideSelect.emit(this.selectedIndex);
