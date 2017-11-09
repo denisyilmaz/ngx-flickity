@@ -21,7 +21,7 @@
         ]
     },
     "angularCompilerOptions": {
-        "skipMetadataEmit": false,
+        "skipMetadataEmit": true,
         "skipTemplateCodegen": true
     },
     "awesomeTypescriptLoaderOptions": {

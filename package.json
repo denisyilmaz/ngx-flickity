@@ -34,6 +34,8 @@
     "url": "git+https://github.com/geex-arts/ngx-flickity.git"
   },
   "keywords": [
+    "angular",
+    "angular5",
     "angular2",
     "component",
     "flickity",
