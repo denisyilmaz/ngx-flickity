@@ -1,7 +1,7 @@
 {
   "name": "ngx-flickity",
   "version": "0.0.8",
-  "description": "Angular2 component for https://flickity.metafizzy.co/",
+  "description": "Angular component for https://flickity.metafizzy.co/",
   "main": "dist/index.js",
   "dependencies": {
     "flickity": "^2.0.10"
@@ -36,7 +36,6 @@
   "keywords": [
     "angular",
     "angular5",
-    "angular2",
     "component",
     "flickity",
     "gallery"
