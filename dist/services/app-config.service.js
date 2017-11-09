@@ -6,9 +6,16 @@ var AppConfigService = /** @class */ (function () {
     function AppConfigService(platformId) {
         this.platformId = platformId;
     }
-    AppConfigService.prototype.isPlatformServer = function () {
-        return common_1.isPlatformServer(this.platformId);
-    };
+    Object.defineProperty(AppConfigService.prototype, "isPlatformServer", {
+        get: function () {
+            if (!this._isPlatformServer) {
+                this._isPlatformServer = common_1.isPlatformServer(this.platformId);
+            }
+            return this._isPlatformServer;
+        },
+        enumerable: true,
+        configurable: true
+    });
     AppConfigService.decorators = [
         { type: core_1.Injectable },
     ];

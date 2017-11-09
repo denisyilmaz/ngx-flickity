@@ -10,7 +10,7 @@ import { AppConfigService } from '../../services/app-config.service';
 @Directive({ selector: '[flickity]' })
 export class FlickityDirective implements AfterContentInit, OnDestroy {
 
-  @Input('flickity') config: FlickityOptions = {};
+  @Input('flickityConfig') config: FlickityOptions = {};
   @Output() slideSelect = new EventEmitter<number>();
   @Output() cellStaticClick = new EventEmitter<number>();
   @Output() childrenUpdated = new EventEmitter<void>();
@@ -19,9 +19,11 @@ export class FlickityDirective implements AfterContentInit, OnDestroy {
   private appendElements: HTMLElement[] = [];
   private childrenUpdate;
   private childrenUpdateInterval = 300;
-
+  private flickityElement: HTMLElement
   constructor(private el: ElementRef,
-              private appConfigService: AppConfigService) {}
+              private appConfigService: AppConfigService) {
+                this.flickityElement = el.nativeElement
+              }
 
   ngAfterContentInit(): void {
     this.init();
@@ -32,7 +34,7 @@ export class FlickityDirective implements AfterContentInit, OnDestroy {
   }
 
   init() {
-    if (this.appConfigService.isPlatformServer()) {
+    if (this.appConfigService.isPlatformServer || !this.flickityElement) {
       return;
     }
 
@@ -45,7 +47,7 @@ export class FlickityDirective implements AfterContentInit, OnDestroy {
       this.destroy();
     }
 
-    this.flkty = new Flickity(this.el.nativeElement, config);
+    this.flkty = new Flickity(this.flickityElement, config);
 
     this.flkty.on('select', () => {
       this.slideSelect.emit(this.selectedIndex);

@@ -12,6 +12,7 @@ var FlickityDirective = /** @class */ (function () {
         this.childrenUpdated = new core_1.EventEmitter();
         this.appendElements = [];
         this.childrenUpdateInterval = 300;
+        this.flickityElement = el.nativeElement;
     }
     FlickityDirective.prototype.ngAfterContentInit = function () {
         this.init();
@@ -21,7 +22,7 @@ var FlickityDirective = /** @class */ (function () {
     };
     FlickityDirective.prototype.init = function () {
         var _this = this;
-        if (this.appConfigService.isPlatformServer()) {
+        if (this.appConfigService.isPlatformServer || !this.flickityElement) {
             return;
         }
         var Flickity = require('flickity');
@@ -30,7 +31,7 @@ var FlickityDirective = /** @class */ (function () {
             config['initialIndex'] = this.flkty.selectedIndex;
             this.destroy();
         }
-        this.flkty = new Flickity(this.el.nativeElement, config);
+        this.flkty = new Flickity(this.flickityElement, config);
         this.flkty.on('select', function () {
             _this.slideSelect.emit(_this.selectedIndex);
         });
@@ -149,7 +150,7 @@ var FlickityDirective = /** @class */ (function () {
         { type: app_config_service_1.AppConfigService, },
     ]; };
     FlickityDirective.propDecorators = {
-        'config': [{ type: core_1.Input, args: ['flickity',] },],
+        'config': [{ type: core_1.Input, args: ['flickityConfig',] },],
         'slideSelect': [{ type: core_1.Output },],
         'cellStaticClick': [{ type: core_1.Output },],
         'childrenUpdated': [{ type: core_1.Output },],

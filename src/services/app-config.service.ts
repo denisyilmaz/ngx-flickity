@@ -6,7 +6,11 @@ export class AppConfigService {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-  isPlatformServer() {
-    return isPlatformServer(this.platformId);
+  _isPlatformServer:boolean
+  get isPlatformServer() {
+    if(!this._isPlatformServer) {
+      this._isPlatformServer = isPlatformServer(this.platformId)
+    }
+    return this._isPlatformServer
   }
 }
