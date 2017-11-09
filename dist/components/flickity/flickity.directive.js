@@ -10,19 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var app_config_service_1 = require("../../services/app-config.service");
 var FlickityDirective = /** @class */ (function () {
-    function FlickityDirective(el, appConfigService) {
-        this.el = el;
-        this.appConfigService = appConfigService;
+    function FlickityDirective() {
         this.config = {};
-        this.slideSelect = new core_1.EventEmitter();
-        this.cellStaticClick = new core_1.EventEmitter();
-        this.childrenUpdated = new core_1.EventEmitter();
     }
     FlickityDirective.prototype.ngAfterContentInit = function () {
         // this.init();
-        console.log('HI');
+        console.log('HI', this.config);
     };
     FlickityDirective.prototype.ngOnDestroy = function () {
         // this.destroy();
@@ -31,22 +25,9 @@ var FlickityDirective = /** @class */ (function () {
         core_1.Input('flickity'),
         __metadata("design:type", Object)
     ], FlickityDirective.prototype, "config", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", Object)
-    ], FlickityDirective.prototype, "slideSelect", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", Object)
-    ], FlickityDirective.prototype, "cellStaticClick", void 0);
-    __decorate([
-        core_1.Output(),
-        __metadata("design:type", Object)
-    ], FlickityDirective.prototype, "childrenUpdated", void 0);
     FlickityDirective = __decorate([
         core_1.Directive({ selector: '[flickity]' }),
-        __metadata("design:paramtypes", [core_1.ElementRef,
-            app_config_service_1.AppConfigService])
+        __metadata("design:paramtypes", [])
     ], FlickityDirective);
     return FlickityDirective;
 }());

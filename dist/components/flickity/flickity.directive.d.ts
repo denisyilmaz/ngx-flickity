@@ -1,14 +1,8 @@
-import { ElementRef, OnDestroy, EventEmitter, AfterContentInit } from '@angular/core';
-import { FlickityOptions } from "../../interfaces/flickity-options.interface";
-import { AppConfigService } from '../../services/app-config.service';
+/// <reference types="flickity" />
+import { OnDestroy, AfterContentInit } from '@angular/core';
 export declare class FlickityDirective implements AfterContentInit, OnDestroy {
-    private el;
-    private appConfigService;
     config: FlickityOptions;
-    slideSelect: EventEmitter<number>;
-    cellStaticClick: EventEmitter<number>;
-    childrenUpdated: EventEmitter<void>;
-    constructor(el: ElementRef, appConfigService: AppConfigService);
+    constructor();
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
 }
