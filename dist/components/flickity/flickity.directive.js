@@ -19,9 +19,6 @@ var FlickityDirective = /** @class */ (function () {
         this.slideSelect = new core_1.EventEmitter();
         this.cellStaticClick = new core_1.EventEmitter();
         this.childrenUpdated = new core_1.EventEmitter();
-        this.appendElements = [];
-        this.childrenUpdateInterval = 300;
-        this.flickityElement = el.nativeElement;
     }
     FlickityDirective.prototype.ngAfterContentInit = function () {
         // this.init();

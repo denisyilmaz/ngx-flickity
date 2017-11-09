@@ -8,11 +8,6 @@ export declare class FlickityDirective implements AfterContentInit, OnDestroy {
     slideSelect: EventEmitter<number>;
     cellStaticClick: EventEmitter<number>;
     childrenUpdated: EventEmitter<void>;
-    private flkty;
-    private appendElements;
-    private childrenUpdate;
-    private childrenUpdateInterval;
-    private flickityElement;
     constructor(el: ElementRef, appConfigService: AppConfigService);
     ngAfterContentInit(): void;
     ngOnDestroy(): void;

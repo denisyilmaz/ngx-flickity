@@ -15,16 +15,9 @@ export class FlickityDirective implements AfterContentInit, OnDestroy {
   @Output() cellStaticClick = new EventEmitter<number>();
   @Output() childrenUpdated = new EventEmitter<void>();
 
-  private flkty: any;
-  private appendElements: HTMLElement[] = [];
-  private childrenUpdate;
-  private childrenUpdateInterval = 300;
-  private flickityElement: HTMLElement;
   
   constructor(private el: ElementRef,
-              private appConfigService: AppConfigService) {
-                this.flickityElement = el.nativeElement
-              }
+              private appConfigService: AppConfigService) { }
 
   ngAfterContentInit(): void {
     // this.init();
