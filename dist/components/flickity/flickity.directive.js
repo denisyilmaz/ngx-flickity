@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var app_config_service_1 = require("../../services/app-config.service");
 var FlickityDirective = /** @class */ (function () {
-    function FlickityDirective(viewContainerRef, appConfigService) {
-        this.viewContainerRef = viewContainerRef;
+    function FlickityDirective(el, appConfigService) {
+        this.el = el;
         this.appConfigService = appConfigService;
         this.config = {};
         this.slideSelect = new core_1.EventEmitter();
@@ -30,7 +30,7 @@ var FlickityDirective = /** @class */ (function () {
             config['initialIndex'] = this.flkty.selectedIndex;
             this.destroy();
         }
-        this.flkty = new Flickity(this.viewContainerRef, config);
+        this.flkty = new Flickity(this.el.nativeElement, config);
         this.flkty.on('select', function () {
             _this.slideSelect.emit(_this.selectedIndex);
         });
@@ -145,7 +145,7 @@ var FlickityDirective = /** @class */ (function () {
     ];
     /** @nocollapse */
     FlickityDirective.ctorParameters = function () { return [
-        { type: core_1.ViewContainerRef, },
+        { type: core_1.ElementRef, },
         { type: app_config_service_1.AppConfigService, },
     ]; };
     FlickityDirective.propDecorators = {
