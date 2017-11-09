@@ -4,6 +4,7 @@ import {
   Directive, OnDestroy, Input, Output, EventEmitter, AfterContentInit
 } from '@angular/core';
 
+import { FlickityOptions } from "../../interfaces/flickity-options.interface";
 
 @Directive({ selector: '[flickity]' })
 export class FlickityDirective implements AfterContentInit, OnDestroy {
