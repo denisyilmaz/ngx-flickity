@@ -1,17 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var flickity_options_interface_1 = require("../../interfaces/flickity-options.interface");
 var app_config_service_1 = require("../../services/app-config.service");
 var FlickityDirective = /** @class */ (function () {
     function FlickityDirective(el, appConfigService) {
         this.el = el;
         this.appConfigService = appConfigService;
-        this.config = {};
-        this.slideSelect = new core_1.EventEmitter();
-        this.cellStaticClick = new core_1.EventEmitter();
-        this.childrenUpdated = new core_1.EventEmitter();
-        this.appendElements = [];
-        this.childrenUpdateInterval = 300;
         this.flickityElement = el.nativeElement;
     }
     FlickityDirective.prototype.ngAfterContentInit = function () {
@@ -140,20 +135,6 @@ var FlickityDirective = /** @class */ (function () {
         if (isWrapped === void 0) { isWrapped = true; }
         if (isInstant === void 0) { isInstant = false; }
         this.flkty.select(index, isWrapped, isInstant);
-    };
-    FlickityDirective.decorators = [
-        { type: core_1.Directive, args: [{ selector: '[flickity]' },] },
-    ];
-    /** @nocollapse */
-    FlickityDirective.ctorParameters = function () { return [
-        { type: core_1.ElementRef, },
-        { type: app_config_service_1.AppConfigService, },
-    ]; };
-    FlickityDirective.propDecorators = {
-        'config': [{ type: core_1.Input, args: ['flickity',] },],
-        'slideSelect': [{ type: core_1.Output },],
-        'cellStaticClick': [{ type: core_1.Output },],
-        'childrenUpdated': [{ type: core_1.Output },],
     };
     return FlickityDirective;
 }());

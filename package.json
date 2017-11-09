@@ -7,15 +7,15 @@
     "flickity": "^2.0.10"
   },
   "devDependencies": {
-    "@angular/compiler": "^4.0.0",
-    "@angular/compiler-cli": "^4.0.2",
-    "@angular/core": "^4.0.0",
-    "@angular/common": "~4.0.0",
+    "@angular/compiler": "^5.0.0",
+    "@angular/compiler-cli": "^5.0.0",
+    "@angular/core": "^5.0.0",
+    "@angular/common": "^5.0.0",
     "@types/flickity": "^1.1.32",
     "core-js": "^2.4.0",
-    "rxjs": "^5.1.0",
-    "typescript": "^2.1.0",
-    "zone.js": "^0.8.0"
+    "rxjs": "^5.4.0",
+    "typescript": "^2.5.3",
+    "zone.js": "^0.8.10"
   },
   "scripts": {
     "init": "npm install",

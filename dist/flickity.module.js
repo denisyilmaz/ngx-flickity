@@ -8,15 +8,6 @@ var DIRECTIVES = [flickity_directive_1.FlickityDirective, flickity_child_directi
 var FlickityModule = /** @class */ (function () {
     function FlickityModule() {
     }
-    FlickityModule.decorators = [
-        { type: core_1.NgModule, args: [{
-                    declarations: DIRECTIVES,
-                    exports: DIRECTIVES,
-                    providers: [app_config_service_1.AppConfigService]
-                },] },
-    ];
-    /** @nocollapse */
-    FlickityModule.ctorParameters = function () { return []; };
     return FlickityModule;
 }());
 exports.FlickityModule = FlickityModule;

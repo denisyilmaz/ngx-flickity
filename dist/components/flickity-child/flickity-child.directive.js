@@ -13,17 +13,6 @@ var FlickityChildDirective = /** @class */ (function () {
         }
         this.parent.append(this.el.nativeElement);
     };
-    FlickityChildDirective.decorators = [
-        { type: core_1.Directive, args: [{ selector: '[flickityChild]' },] },
-    ];
-    /** @nocollapse */
-    FlickityChildDirective.ctorParameters = function () { return [
-        { type: core_1.ElementRef, },
-        { type: flickity_directive_1.FlickityDirective, decorators: [{ type: core_1.Optional }, { type: core_1.Host },] },
-    ]; };
-    FlickityChildDirective.propDecorators = {
-        'flickityChild': [{ type: core_1.Input },],
-    };
     return FlickityChildDirective;
 }());
 exports.FlickityChildDirective = FlickityChildDirective;

@@ -16,13 +16,6 @@ var AppConfigService = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    AppConfigService.decorators = [
-        { type: core_1.Injectable },
-    ];
-    /** @nocollapse */
-    AppConfigService.ctorParameters = function () { return [
-        { type: Object, decorators: [{ type: core_1.Inject, args: [core_1.PLATFORM_ID,] },] },
-    ]; };
     return AppConfigService;
 }());
 exports.AppConfigService = AppConfigService;
